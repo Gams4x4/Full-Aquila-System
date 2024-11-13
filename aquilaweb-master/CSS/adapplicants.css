@@ -1,0 +1,432 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: black;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #283a7a;
+  color: white;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar h1 img {
+  width: 60px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar a:hover {
+  background-color: #3b4e9e;
+}
+
+/* Highlight the active page link */
+.sidebar a.active {
+  background-color: #3b4e9e;
+  font-weight: bold;
+}
+
+.sidebar a p {
+  margin: 0;
+}
+
+/* Main content area */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  background-color: #2e3859;
+  min-height: 100vh;
+  overflow: auto;
+}
+
+/* Table container */
+.container {
+  margin-top: 50px;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filterEntries, .addMemberBtn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.filter input[type="search"] {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Add Employee Button */
+.addMemberBtn button {
+  padding: 8px 16px;
+  background-color: #283a7a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.addMemberBtn button:hover {
+  background-color: #3b4e9e;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+}
+
+table th {
+  background-color: #283a7a;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Table images */
+table .userInfo img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Footer styling */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background-color: #bbb;
+}
+
+.dark_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.popup {
+  background-color: #ffffff;
+  padding: 30px;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.popup header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.popup header h2 {
+  font-size: 1.2em;
+}
+
+.popup .closeBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup .body form {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup .body .form_control {
+  margin-bottom: 15px;
+}
+
+.popup .body label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.popup .body input[type="text"],
+.popup .body input[type="number"],
+.popup .body input[type="email"],
+.popup .body input[type="date"],
+.popup .body input[type="file"] {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+.submitBtn {
+  padding: 10px 20px;
+  background-color: #283a7a;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submitBtn:hover {
+  background-color: #3b4e9e;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+  }
+
+  .main-content {
+      margin-left: 0;
+      padding: 20px 10px;
+  }
+
+  table th, table td {
+      padding: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+  
+  .addMemberBtn button {
+      width: 100%;
+  }
+}
+
+/* Style for Search and Cancel Buttons */
+.srch_btn form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.srch_btn input[type="search"] {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 14px;
+  transition: border 0.3s ease;
+}
+
+.srch_btn input[type="search"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.srch_btn button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.srch_btn button[type="submit"] {
+  background-color: #283a7a;
+  color: white;
+}
+
+.srch_btn button[type="submit"]:hover {
+  background-color: #283a7a;
+  transform: scale(1.05);
+}
+
+.srch_btn button[type="button"] {
+  background-color: #dc3545;
+  color: white;
+}
+
+.srch_btn button[type="button"]:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+.srch_btn button:active {
+  transform: scale(0.98);
+}
+
+/* Sidebar active link styling */
+.sidebar a.active {
+  background-color: white; /* Highlight color */
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.content-overlay p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  color: #00f7ff;
+}
+
+
+.status-selected {
+  background-color: #28a745;
+  color: white;
+}
+
+.status-in-process {
+  background-color: #ffc107;
+  color: black;
+}
+
+.status-rejected {
+  background-color: #dc3545;
+  color: white;
+}
+/* Add/Edit Candidate Button */
+.add-candidate-btn {
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Modal Styles */
+.modal {
+  
+  display: none; /* Ensure modal is hidden initially */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Make sure modal appears above other elements */
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  max-width: 90%; /* Makes the modal responsive */
+  color: #000;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+}
+
+.modal-content input, .modal-content select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.close-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+}

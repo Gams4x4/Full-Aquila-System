@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquila Tekno Solutions Inc.</title>
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body class="login-body">
+    <video autoplay muted loop class="video-background">
+        <source src="IMG//bg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="login-container">
+        <div class="logo-placeholder">
+            <img src="IMG//aquila.png?w=150&h=150" alt="Aquila Corps Logo" class="logo">
+        </div>
+        <h1>Aquila Tekno Solutions Inc.</h1>
+
+        <form id="login-form" action="/database/login.php" method="POST"> 
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+            <button type="submit">Log In</button>
+        </form>
+        <div id="error-message"></div> 
+        <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const errorMessage = document.getElementById('error-message');
+
+        loginForm.addEventListener('submit', (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            const formData = new FormData(loginForm);
+
+            fetch(loginForm.action, {
+                method: loginForm.method,
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text(); // Assuming login.php returns plain text
+            })
+            .then(data => {
+                if (data === 'success') {
+                    window.location.href = 'clientds.php'; // Redirect clients
+                } else if (data === 'success_admin') {
+                    window.location.href = 'ad_dashboard.php'; // Redirect admins
+                } else {
+                    errorMessage.textContent = data; // Display error message
+                }
+            })
+            .catch(error => {
+                console.error('Error during login:', error);
+                errorMessage.textContent = 'An error occurred. Please try again later.';
+            });
+        });
+    </script>
+</body>
+</html>

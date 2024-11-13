@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aquila Corps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #2c2c2c;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #4a4a4a;
+            margin-right: 10px;
+        }
+        .company-name {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .nav-button {
+            padding: 10px 15px;
+            background-color: #3a3a3a;
+            color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: left;
+        }
+        .nav-button:hover {
+            background-color: #4a4a4a;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <header class="header">
+            <div class="logo"></div>
+            <div class="company-name">Aquila Corps</div>
+        </header>
+        <nav class="nav">
+            <button class="nav-button">Dashboard Overview</button>
+            <button class="nav-button">Employee Management</button>
+            <button class="nav-button">Attendance and Leave Control</button>
+            <button class="nav-button">Payroll Management</button>
+            <button class="nav-button">Task and Performance Management</button>
+            <button class="nav-button">Shift Scheduling</button>
+            <button class="nav-button">Document Management</button>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <!-- Main content goes here -->
+        <h1>Welcome to Aquila Corps Dashboard</h1>
+        <p>Select an option from the sidebar to get started.</p>
+    </main>
+</body>
+</html>
