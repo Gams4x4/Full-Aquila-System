@@ -53,6 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if ($stmt->execute()) {
       echo "New appointment scheduled successfully";
+      header("Location: clscheduling.php");
+      exit();
   } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
   }
@@ -89,7 +91,7 @@ if (isset($_GET['delete_id'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scheduling</title>
-  <link rel="stylesheet" href="CSS/style1.css">
+  <link rel="stylesheet" href="CSS/style2.css">
   
 </head>
 <body>
@@ -102,10 +104,7 @@ if (isset($_GET['delete_id'])) {
       <a href="clscheduling.php" class="nav-link active">Scheduling</a>
       <a href="clpayment.php" class="nav-link">Payment</a>
       <a href="login.html" class="nav-link">Logout</a>
-      <div class="theme-toggle">
-        <button>Light</button>
-        <button>Dark</button>
-      </div>
+      
     </div>
 
     <!-- Main Content -->

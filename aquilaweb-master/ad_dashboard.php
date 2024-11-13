@@ -16,6 +16,19 @@ $conn = new mysqli($host, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+// Fetch appointments data from the database
+$appointments = [];
+$sql = "SELECT client_id, project_name, appointment_date FROM appointments";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $appointments[] = $row;
+    }
+}
+
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,14 +37,13 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AQUILA CORPS</title>
     <link rel="stylesheet" href="CSS/addashboard.css">
-   
 </head>
 <body>
 
 <!-- Sidebar -->
 <div class="sidebar">
     <h1>
-        <img src="IMG\aquila.png" alt="Logo">
+        <img src="IMG/aquila.png" alt="Logo">
         AQUILA CORPS
     </h1>
     <a href="ad_dashboard.php"><p>Dashboard</p></a>
@@ -40,7 +52,6 @@ if ($conn->connect_error) {
     <a href="Departments.php"><p>Departments</p></a>
     <a href="Attendance.php"><p>Attendance</p></a>
     <a href="Jobs.php"><p>Jobs</p></a>
-    
     <a href="Leaves.php"><p>Leaves</p></a>
     <a href="Login.html"><p>Logout</p></a>
 </div>
@@ -69,14 +80,30 @@ if ($conn->connect_error) {
             <div class="day-name">Sat</div>
         </div>
     </div>
+
+    <!-- Modal for Appointments -->
+    <div id="appointmentsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Appointments</h2>
+            <ul id="appointmentsList"></ul>
+        </div>
+    </div>
+
 </div>
 
 <script>
+    // Pass appointments from PHP to JavaScript
+    const appointments = <?= json_encode($appointments); ?>;
+
     // Get elements
     const calendarMonth = document.getElementById('calendarMonth');
     const calendarGrid = document.getElementById('calendarGrid');
     const prevMonthButton = document.getElementById('prevMonth');
     const nextMonthButton = document.getElementById('nextMonth');
+    const modal = document.getElementById('appointmentsModal');
+    const closeModal = document.querySelector('.close');
+    const appointmentsList = document.getElementById('appointmentsList');
 
     // Initialize current date
     let currentDate = new Date();
@@ -116,9 +143,37 @@ if ($conn->connect_error) {
             const dayDiv = document.createElement('div');
             dayDiv.classList.add('day');
             dayDiv.textContent = day;
+
+            // Check if this day has any appointments
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dayAppointments = appointments.filter(appointment => appointment.appointment_date === dateStr);
+
+            if (dayAppointments.length > 0) {
+                dayDiv.classList.add('appointment-day'); // Optional: highlight the day
+
+                // Add click event to open modal with appointments
+                dayDiv.addEventListener('click', () => showAppointmentsModal(dayAppointments));
+            }
+
             calendarGrid.appendChild(dayDiv);
         }
     }
+
+    // Show the modal with appointments for the clicked day
+    function showAppointmentsModal(dayAppointments) {
+        appointmentsList.innerHTML = ''; // Clear the existing list
+        dayAppointments.forEach(appointment => {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Client ID: ${appointment.client_id} - Project: ${appointment.project_name} - Date: ${appointment.appointment_date}`;
+            appointmentsList.appendChild(listItem);
+        });
+        modal.style.display = "block";
+    }
+
+    // Close the modal
+    closeModal.addEventListener('click', () => {
+        modal.style.display = "none";
+    });
 
     // Event listeners for buttons to navigate months
     prevMonthButton.addEventListener('click', () => {
@@ -134,6 +189,8 @@ if ($conn->connect_error) {
     // Initial render
     renderCalendar();
 </script>
+
+
 
 </body>
 </html>

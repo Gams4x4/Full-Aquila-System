@@ -50,8 +50,8 @@ $latestCreatedAt = $row['latest_created_at'];
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Dashboard</title>
-  <link rel="stylesheet" href="CSS/style1.css">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="CSS/style2.css">
 </head>
 <body>
   <div class="container">
@@ -59,13 +59,12 @@ $latestCreatedAt = $row['latest_created_at'];
     <div class="sidebar">
       <img src="IMG/aquila.png" alt="Logo">
       <h2>AQUILA CORPS</h2>
-      <a href="clientds.php" class="nav-link" id="dashboard-link">CLIENT Dashboard</a>
+      <a href="clientds.php" class="nav-link" id="dashboard-link">Dashboard</a>
       <a href="clscheduling.php" class="nav-link" id="scheduling-link">Scheduling</a>
       <a href="clpayment.php" class="nav-link" id="payment-link">Payment</a>
       <a href="login.html" class="nav-link" id="settings-link">Logout</a>
       <div class="theme-toggle">
-        <button>Light</button>
-        <button>Dark</button>
+       
       </div>
     </div>
 
