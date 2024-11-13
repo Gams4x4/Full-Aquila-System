@@ -177,9 +177,9 @@ body {
 }
 
 .appointment-day {
-    background-color: #ffeb3b; /* Yellow highlight for appointment days */
+    background-color: yellowgreen; /* Change highlight color to red */
     border-radius: 50%;
-    color: #283a7a; /* Darker color for text */
+    color: #fff; /* White text for better contrast */
     font-weight: bold;
     cursor: pointer;
 }
@@ -220,3 +220,17 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+/* Days of the Week */
+
+
+/* Style for each calendar day */
+.day {
+   
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px; /* Adjust the height for proper visibility */
+    color: black; /* Change text color of dates to black */
+}
+
